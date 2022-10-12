@@ -95,7 +95,7 @@ func (c *Candidate) initLock() (store.Locker, error) {
 	// Give up on the lock session if
 	// we recovered from a store failure
 	if c.stopRenew != nil {
-		close(c.stopRenew)
+		c.stopRenew = nil
 	}
 
 	lockOpts := &store.LockOptions{
